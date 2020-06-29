@@ -8,7 +8,11 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-<!--    <include file="scripts/DdlScripts.sql" relativeToChangelogFile="true"/>-->
-<!--    <include file="scripts/DmlScripts.sql" relativeToChangelogFile="true"/>-->
+    <include file="scripts/001_dropAll.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/002_game.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/003_player.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/004_school.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/005_alter_game.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/006_alter_player.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
