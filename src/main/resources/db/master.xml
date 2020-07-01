@@ -14,6 +14,8 @@
     <include file="scripts/004_school.sql" relativeToChangelogFile="true"/>
     <include file="scripts/005_alter_game.sql" relativeToChangelogFile="true"/>
     <include file="scripts/006_alter_player.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/007_insert_data.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/007_sequence.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/008_insert_data.sql" relativeToChangelogFile="true"/>
+<!--    <include file="scripts/009_current_timeszone.sql" relativeToChangelogFile="true"/>-->
 
 </databaseChangeLog>

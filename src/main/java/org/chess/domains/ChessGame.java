@@ -28,12 +28,6 @@ public class ChessGame {
     @CreationTimestamp
     private Timestamp gameFinished;
 
-    @ManyToOne
-    @JoinColumn(name = "winner_id",
-            foreignKey = @ForeignKey(name = "WINNER_ID_FK")
-    )
-    private ChessPlayer winner;
-
     @Column(nullable = false)
     private int firstPlayerEloChanged;
 
@@ -45,6 +39,10 @@ public class ChessGame {
 
     public ChessGame(long id) {
         this.id = id;
+    }
+
+    public ChessGame(Timestamp gameFinished) {
+        this.gameFinished = gameFinished;
     }
 
     public long getId() {
@@ -75,14 +73,6 @@ public class ChessGame {
         this.gameFinished = gameFinished;
     }
 
-    public ChessPlayer getWinner() {
-        return winner;
-    }
-
-    public void setWinner(ChessPlayer winner) {
-        this.winner = winner;
-    }
-
     public int getFirstPlayerEloChanged() {
         return firstPlayerEloChanged;
     }
@@ -111,13 +101,12 @@ public class ChessGame {
         return id == chessGame.id
                 && firstPlayer.equals(chessGame.firstPlayer)
                 && secondPlayer.equals(chessGame.secondPlayer)
-                && gameFinished.equals(chessGame.gameFinished)
-                && winner.equals(chessGame.winner);
+                && gameFinished.equals(chessGame.gameFinished);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstPlayer.getName(), secondPlayer.getName(), gameFinished, winner.getName());
+        return Objects.hash(id, firstPlayer.getName(), secondPlayer.getName(), gameFinished.getTime());
     }
 
     @Override
@@ -127,7 +116,6 @@ public class ChessGame {
                 ", firstPlayer=" + firstPlayer.getName() +
                 ", secondPlayer=" + secondPlayer.getName() +
                 ", gameFinished=" + gameFinished +
-                ", winner=" + winner.getName() +
                 '}';
     }
 }

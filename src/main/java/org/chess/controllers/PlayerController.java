@@ -1,6 +1,8 @@
 package org.chess.controllers;
 
 import org.chess.domains.ChessPlayer;
+import org.chess.domains.ChessSchool;
+import org.chess.repositories.GameRepository;
 import org.chess.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -17,8 +20,18 @@ public class PlayerController {
 
     private final PlayerRepository plrRep;
 
-    public PlayerController(@Autowired PlayerRepository plrRep) {
+    private final GameRepository gmrRep;
+
+    public PlayerController(@Autowired PlayerRepository plrRep, @Autowired GameRepository gmrRep) {
         this.plrRep = plrRep;
+        this.gmrRep = gmrRep;
+    }
+
+    @GetMapping("/players/best")
+    public ResponseEntity<List<ChessPlayer>> getAllBsetPlayersInLast5Minutes() {
+        List<ChessPlayer> answer = plrRep.bestInLastFiveMinutes();
+        answer.forEach(x -> x.setSchool(new ChessSchool(x.getSchool().getId())));
+        return new ResponseEntity<>(answer, HttpStatus.OK);
     }
 
     @GetMapping("/players")
