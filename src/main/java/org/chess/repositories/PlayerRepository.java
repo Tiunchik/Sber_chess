@@ -20,7 +20,7 @@ public interface PlayerRepository extends JpaRepository<ChessPlayer, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "update player set elo = elo + ?1 where id = ?2",
+    @Query(value = "update player set elo = elo + ?2 where id = ?1",
     nativeQuery = true)
     int changeElo(int player_id, int elochange);
 
