@@ -29,9 +29,7 @@ public class PlayerController {
 
     @GetMapping("/players/best")
     public ResponseEntity<List<ChessPlayer>> getAllBsetPlayersInLast5Minutes() {
-        List<ChessPlayer> answer = plrRep.bestInLastFiveMinutes();
-        answer.forEach(x -> x.setSchool(new ChessSchool(x.getSchool().getId())));
-        return new ResponseEntity<>(answer, HttpStatus.OK);
+        return new ResponseEntity<>(plrRep.bestInLastFiveMinutes(), HttpStatus.OK);
     }
 
     @GetMapping("/players")

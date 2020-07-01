@@ -1,5 +1,8 @@
 package org.chess.domains;
 
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -16,7 +19,10 @@ public class ChessPlayer {
     @Column(nullable = false)
     private int elo;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
+    @JoinColumn(name = "school_id",
+            foreignKey = @ForeignKey(name = "SCHOOL_ID_FK")
+    )
     private ChessSchool school;
 
     public ChessPlayer() {

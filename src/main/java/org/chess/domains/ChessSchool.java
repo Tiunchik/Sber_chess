@@ -15,9 +15,6 @@ public class ChessSchool {
     @Column(unique = true, nullable = false)
     private String called;
 
-    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ChessPlayer> players = new ArrayList();
-
     public ChessSchool() {
     }
 
@@ -35,14 +32,6 @@ public class ChessSchool {
 
     public void setCalled(String called) {
         this.called = called;
-    }
-
-    public List<ChessPlayer> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<ChessPlayer> players) {
-        this.players = players;
     }
 
     @Override
