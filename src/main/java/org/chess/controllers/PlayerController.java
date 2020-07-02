@@ -1,7 +1,6 @@
 package org.chess.controllers;
 
 import org.chess.domains.ChessPlayer;
-import org.chess.domains.ChessSchool;
 import org.chess.repositories.GameRepository;
 import org.chess.repositories.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")

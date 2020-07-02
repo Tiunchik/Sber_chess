@@ -1,6 +1,7 @@
 package org.chess.repositories;
 
 import org.chess.domains.ChessPlayer;
+import org.library.annotations.Monitoring;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,6 +25,7 @@ public interface PlayerRepository extends JpaRepository<ChessPlayer, Integer> {
     @Transactional
     @Query(value = "update player set elo = elo + ?2 where id = ?1",
     nativeQuery = true)
+    @Monitoring(name="CHANGE_ELO")
     int changeElo(int player_id, int elochange);
 
     @Query(value = "select * from\n" +
@@ -36,6 +38,7 @@ public interface PlayerRepository extends JpaRepository<ChessPlayer, Integer> {
             "group by p.id\n" +
             "order by cnt DESC) last where cnt > 0 limit 5",
             nativeQuery = true)
+    @Monitoring(name ="GET_TOP_FIVE")
     List<ChessPlayer> bestInLastFiveMinutes();
 
 }

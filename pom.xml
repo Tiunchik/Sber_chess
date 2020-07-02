@@ -22,6 +22,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.library</groupId>
+            <artifactId>library</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>/home/maskim/projects/testasks/Library/target/library-1.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -34,6 +42,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
         <dependency>
@@ -54,6 +67,8 @@
         </dependency>
 
     </dependencies>
+
+
     <build>
         <plugins>
             <plugin>

@@ -1,5 +1,6 @@
 package org.chess.logic;
 
+import org.library.annotations.Monitoring;
 import org.chess.domains.ChessGame;
 import org.chess.domains.ChessPlayer;
 import org.chess.repositories.GameRepository;
@@ -9,8 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.Calendar;
 import java.util.Random;
 import java.util.TimeZone;
@@ -36,6 +35,7 @@ public class Logic {
     private ChessPlayer second;
 
     @Scheduled(fixedRate = 30000L)
+    @Monitoring (name = "DO_CALCULATE")
     public void calculate() {
         if (loadPlayers()) {
             double sa, sb;
@@ -71,13 +71,12 @@ public class Logic {
     }
 
     private ChessGame saveGame(double sa, int eloFirst, int eloSecond) {
-        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Vladivostok"));
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Moscow"));
         ChessGame game = new ChessGame(cal.getTimeInMillis());
-        System.out.println(cal.getTime());
-        game.setFirstPlayer(sa == 1 ? first : sa == 0 ? second: first);
-        game.setSecondPlayer(sa == 1 ? second: sa == 0 ? first: second);
-        game.setFirstPlayerEloChanged(sa == 1 ? eloFirst : sa == 0 ? eloSecond: eloFirst);
-        game.setSecondPlayerEloChanged(sa == 1 ? eloSecond : sa == 0 ? eloFirst: eloSecond);
+        game.setFirstPlayer(sa == 1 ? first : sa == 0 ? second : first);
+        game.setSecondPlayer(sa == 1 ? second : sa == 0 ? first : second);
+        game.setFirstPlayerEloChanged(sa == 1 ? eloFirst : sa == 0 ? eloSecond : eloFirst);
+        game.setSecondPlayerEloChanged(sa == 1 ? eloSecond : sa == 0 ? eloFirst : eloSecond);
         game = gamRep.save(game);
         return game;
     }
