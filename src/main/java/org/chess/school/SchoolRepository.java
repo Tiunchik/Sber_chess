@@ -1,6 +1,5 @@
-package org.chess.repositories;
+package org.chess.school;
 
-import org.chess.domains.ChessSchool;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

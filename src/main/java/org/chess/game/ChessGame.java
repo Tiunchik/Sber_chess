@@ -1,5 +1,6 @@
-package org.chess.domains;
+package org.chess.game;
 
+import org.chess.player.ChessPlayer;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;

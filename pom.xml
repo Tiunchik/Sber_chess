@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -22,21 +21,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.library</groupId>
-            <artifactId>library</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>/home/maskim/projects/testasks/Library/target/library-1.0.jar</systemPath>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -66,6 +52,13 @@
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.library</groupId>
+            <artifactId>library</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${user.home}/projects/testasks/Library/target/library-1.0.jar</systemPath>
+        </dependency>
     </dependencies>
 
 
@@ -76,7 +69,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <finalName>Chess</finalName>
-                    <mainClass>org.drive.ServerApplication</mainClass>
+                    <mainClass>org.chess.Application</mainClass>
                 </configuration>
             </plugin>
         </plugins>

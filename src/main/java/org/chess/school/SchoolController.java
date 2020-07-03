@@ -1,7 +1,7 @@
-package org.chess.controllers;
+package org.chess.school;
 
-import org.chess.domains.ChessSchool;
-import org.chess.repositories.SchoolRepository;
+import org.chess.school.ChessSchool;
+import org.chess.school.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

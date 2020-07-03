@@ -1,7 +1,6 @@
-package org.chess.repositories;
+package org.chess.player;
 
-import org.chess.domains.ChessPlayer;
-import org.library.annotations.Monitoring;
+import org.chess.library.monitoring.Monitoring;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

@@ -1,7 +1,7 @@
-package org.chess.controllers;
+package org.chess.game;
 
-import org.chess.domains.ChessGame;
-import org.chess.repositories.GameRepository;
+import org.chess.game.ChessGame;
+import org.chess.game.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class GameController {
 
+    @Autowired
     private final GameRepository gamRep;
 
     public GameController(@Autowired GameRepository gamRep) {

@@ -1,7 +1,6 @@
-package org.chess.domains;
+package org.chess.player;
 
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
+import org.chess.school.ChessSchool;
 
 import javax.persistence.*;
 import java.util.Objects;

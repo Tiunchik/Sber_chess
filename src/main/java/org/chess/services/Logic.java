@@ -1,20 +1,20 @@
-package org.chess.logic;
+package org.chess.services;
 
-import org.library.annotations.Monitoring;
-import org.chess.domains.ChessGame;
-import org.chess.domains.ChessPlayer;
-import org.chess.repositories.GameRepository;
-import org.chess.repositories.PlayerRepository;
+import org.chess.library.monitoring.Monitoring;
+import org.chess.game.ChessGame;
+import org.chess.player.ChessPlayer;
+import org.chess.game.GameRepository;
+import org.chess.player.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.Random;
 import java.util.TimeZone;
 
-@Component
+@Service
 @Scope(value = "singleton")
 public class Logic {
 
@@ -35,7 +35,7 @@ public class Logic {
     private ChessPlayer second;
 
     @Scheduled(fixedRate = 30000L)
-    @Monitoring (name = "DO_CALCULATE")
+    @Monitoring(name = "DO_CALCULATE")
     public void calculate() {
         if (loadPlayers()) {
             double sa, sb;

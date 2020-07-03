@@ -1,8 +1,6 @@
-package org.chess.domains;
+package org.chess.school;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity(name="school")
