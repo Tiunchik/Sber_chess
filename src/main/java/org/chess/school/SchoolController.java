@@ -6,53 +6,51 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 public class SchoolController {
 
 
-    private final SchoolRepository sclRep;
+    private final ChessSchoolService schlService;
 
-    public SchoolController(@Autowired SchoolRepository sclRep) {
-        this.sclRep = sclRep;
+    public SchoolController(@Autowired ChessSchoolService schlService) {
+        this.schlService = schlService;
     }
 
     @GetMapping("/schools")
-    public ResponseEntity<List<ChessSchool>> getAllSchools() {
-        return new ResponseEntity<>(sclRep.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<ChessSchoolDTO>> getAllSchools() {
+        return new ResponseEntity<>(schlService.getAllSchools(), HttpStatus.OK);
     }
 
     @GetMapping("/schools/{id}")
-    public ResponseEntity<ChessSchool> getSchool(@PathVariable int id) {
-        Optional<ChessSchool> school = sclRep.findById(id);
-        return school
-                .map(e -> new ResponseEntity<>(e, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    public ResponseEntity<ChessSchoolDTO> getSchool(@PathVariable int id) {
+        ChessSchoolDTO school = schlService.getSchool(id);
+        return school != null ? new ResponseEntity<>(school, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/schools")
-    public ResponseEntity<ChessSchool> createSchool(@RequestBody ChessSchool school) {
-        if (school.getId() != 0) {
+    public ResponseEntity<ChessSchoolDTO> createSchool(@RequestBody ChessSchoolDTO school) {
+        if (school.id != 0) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
-        ChessSchool answer = sclRep.save(school);
+        ChessSchoolDTO answer = schlService.saveUpdateSchool(school);
         return new ResponseEntity<>(answer, HttpStatus.OK);
     }
 
     @PutMapping("/schools")
-    public ResponseEntity<ChessSchool> updateSchool(@RequestBody ChessSchool school) {
-        if (school.getId() == 0) {
+    public ResponseEntity<ChessSchoolDTO> updateSchool(@RequestBody ChessSchoolDTO school) {
+        if (school.id == 0) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
-        ChessSchool answer = sclRep.save(school);
+        ChessSchoolDTO answer = schlService.saveUpdateSchool(school);
         return new ResponseEntity<>(answer, HttpStatus.OK);
     }
 
     @DeleteMapping("/schools/{id}")
     public ResponseEntity<Void> deleteSchool(@PathVariable int id) {
-        sclRep.deleteById(id);
+        schlService.deleteSchool(id);
         return ResponseEntity.noContent().build();
     }
 
