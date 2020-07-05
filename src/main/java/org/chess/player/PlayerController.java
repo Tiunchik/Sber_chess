@@ -1,8 +1,6 @@
 package org.chess.player;
 
-import org.chess.player.ChessPlayer;
 import org.chess.game.GameRepository;
-import org.chess.player.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

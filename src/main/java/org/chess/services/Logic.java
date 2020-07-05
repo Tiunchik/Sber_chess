@@ -1,7 +1,7 @@
 package org.chess.services;
 
-import org.chess.library.monitoring.Monitoring;
 import org.chess.game.ChessGame;
+import org.chess.library.monitoring.Monitoring;
 import org.chess.player.ChessPlayer;
 import org.chess.game.GameRepository;
 import org.chess.player.PlayerRepository;

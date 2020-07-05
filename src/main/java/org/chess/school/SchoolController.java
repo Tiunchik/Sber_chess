@@ -1,7 +1,5 @@
 package org.chess.school;
 
-import org.chess.school.ChessSchool;
-import org.chess.school.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

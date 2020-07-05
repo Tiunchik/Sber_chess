@@ -1,0 +1,16 @@
+language: java
+jdk:
+  - openjdk13
+
+services:
+  - postgresql
+
+before_install:
+  - psql -c 'create database chess;' -U postgres
+
+notifications:
+  email:
+    recipients:
+      - senebh@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
