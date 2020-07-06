@@ -2,9 +2,9 @@ package org.chess.overallservices;
 
 import org.chess.game.ChessGameDTO;
 import org.chess.game.ChessGameService;
-import org.chess.library.monitoring.Monitoring;
 import org.chess.player.ChessPlayerDTO;
 import org.chess.player.ChessPlayerService;
+import org.library.monitoring.Monitoring;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

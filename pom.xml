@@ -96,8 +96,9 @@
         <dependency>
             <groupId>com.github.Tiunchik</groupId>
             <artifactId>library</artifactId>
-            <version>2a9ca254f4</version>
+            <version>dffc87c49f</version>
         </dependency>
+
 
     </dependencies>
 
